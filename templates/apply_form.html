@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<style type="text/css">
+	body,html{
+	    height:100%;
+	}
+
+	.asteriskField {
+		color: red;
+	}
+
+	.invalid-feedback {
+		display: block;
+	}
+
+	.col-form-label {
+		color: #888;
+	}
+
+	input.form-control, textarea.form-control, select.form-control {
+	    border: 2px solid #ccc;
+        border-radius: 7px;
+	}
+
+	input[type="file"] {
+		font-size: 17px;
+		max-width: 112px;
+	}
+
+	.upload-btn-wrapper {
+		position: relative;
+		overflow: hidden;
+		display: inline-block;
+	}
+
+	.upload-btn-wrapper .btn {
+		border: 2px solid gray;
+		color: gray;
+		background-color: white;
+		padding: 5px;
+		border-radius: 8px;
+		font-size: 14px;
+		font-weight: bold;
+	}
+
+	.upload-btn-wrapper input[type=file] {
+		font-size: 100px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 0;
+	}
+	.upload-btn-wrapper>div {
+		margin-bottom: 0px;
+	}
+</style>
+
+<div class="container my-5">
+	<div class="row">
+		<div class="col-12 d-flex justify-content-between">
+			<h4 style="color: #d15502;">Create a resume</h4>
+			<p>Step 1 of 4</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			
+			{% if form.errors %}
+				<div class="alert alert-danger" role="alert">
+					Please correct the errors below.
+				</div>
+			{% endif %}
+		
+			<form method="POST" enctype="multipart/form-data" novalidate>
+				{% csrf_token %}
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+						{{ form.name|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.email|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.phone|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.expected_salary|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.highest_education|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.birth_date|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.education|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.experience|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12 mb-0">
+					{{ form.job_id|as_crispy_field }}
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-4 mb-0 d-flex justify-content-center">
+						<div class="upload-btn-wrapper">
+							{{ form.resume|as_crispy_field }}
+							<button class="btn">Choose file</button>
+						</div>
+					</div>
+					<div class="form-group col-md-4 mb-0 d-flex justify-content-center">
+						<div class="upload-btn-wrapper">
+							{{ form.transcript|as_crispy_field }}
+							<button class="btn">Choose file</button>
+						</div>
+					</div>
+					<div class="form-group col-md-4 mb-0 d-flex justify-content-center">
+						<div class="upload-btn-wrapper">
+							{{ form.image|as_crispy_field }}
+							<button class="btn">Choose file</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="d-flex justify-content-center mt-5">
+					<input class="btn" type="submit" value="Apply" style="background-color: #d15502; color: #fff;">
+				</div>
+			</form>
+		</div>   
+	</div>  
+</div>
+
+ <script>
+    $(function() {
+	    	$('#datepicker').datepicker({
+	        uiLibrary: 'bootstrap4',
+	        format: 'yyyy-mm-dd',
+	    });
+    })
+</script>
+
+{% endblock %}

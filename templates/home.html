@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style type="text/css">
+	body,html{
+	    height:100%;
+	}
+
+	.circle {
+		width: 10rem;
+		height: 10rem;
+		border-radius: 50%;
+		font-size: 1.5rem;
+		line-height: 10rem;
+		text-align: center;
+		background: #fff;
+		border: 2px solid #b7b7b7;
+	}
+</style>
+
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <form class="col-12">
+    	<div class="d-flex justify-content-center ">
+			<div class="circle mx-2 shadow">
+				<a class="text-dark text-decoration-none" href="/company?job_type=P">Permanent</a>
+			</div>
+			<div class="circle mx-2 shadow">
+				<a class="text-dark text-decoration-none" href="/company?job_type=F">Freelance</a>
+			</div>
+		</div>
+    </form>   
+  </div>  
+</div>
+{% endblock %}

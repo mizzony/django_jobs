@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style type="text/css">
+	.img_logo img{
+		width: 250px;
+		height: 250px;
+	}
+	.img_logo p{
+		margin-top: 10px;
+	}
+	.name_com{
+		color: #111;
+	}
+	.name_com a{
+		color: #111;
+		text-decoration-line: none;
+	}
+	.name_com .h_title{
+		font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+	}
+	.name_com .title_t{
+		margin-left: 5%;
+	}
+	.detail_com .detail_t{
+		margin-left: 1%;
+	}
+	.apply_button{
+		text-align: center;
+	}
+	.apply_button .btn-apply{
+		width: 100%;
+		padding: 2%;
+		border-radius: 15px;
+		background-color: #d45902;
+		font-weight: 700;
+	}
+	@media only screen and (max-width: 600px) {
+		h5 {
+		    font-size: 1rem;
+		}
+		.name_com .h_title{
+			font-size: 1rem;
+	    font-weight: 500;
+		}
+		.name_com a,.name_com p,.name_com span{
+			font-size: 14px;
+		}
+		.detail_com .detail_t {
+	    font-size: 14px;
+		}
+	}
+</style>
+
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 img_logo">
+			<div class="d-flex justify-content-center">
+				<img src="{{ job.company_logo.url }}" style="width: 250px;height: 250px"alt="My image">
+			</div>
+			<h3 class="text-center">{{ job.name }}</h3>
+		</div>
+		<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+			<div class="name_com">
+				<h5>Company {{ job.company }}</h5>
+				<a class="btn btn-link" href="{{ job.company_website }}" target="_blank" title="Go to E-den Clinic Website">{{ job.company_website }}</a>
+			</div>
+			<br>
+			<div class="name_com">
+				<h5>Contact</h5>
+				<p>{{ job.email }}</p>
+				<p>{{ job.phone }}</p>
+			</div>
+			<br>
+			<div class="name_com">
+				<p><span class="h_title">Salary </span><span class="salary">{{ job.salary }} THB.</span></p>
+			</div>
+			<div class="name_com">
+				<h5>สวัสดิการ</h5>
+				<p class="title_t">{{ job.work_day }} วันต่อสัป</p>
+				<p class="title_t">{{ job.work_time }}</p>
+				<p class="title_t">{{ job.benefit|linebreaksbr }}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+			<h5>หน้าที่การทำงาน</h5>
+		</div>
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 detail_com">
+			<p class="detail_t">{{ job.duty|linebreaksbr }}</p>
+		</div>
+	</div>
+<br>
+	<div class="row">
+		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+			<h5>คุณสมบัติ</h5>
+		</div>
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 detail_com">
+			<div>
+				<p class="detail_t">
+					{{ job.description|linebreaksbr }}
+				</p>
+			</div>
+		</div>
+	</div>
+<br>
+	<div class="row">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 apply_button">
+			<a href="apply"><button class="btn btn-apply col-xl-5 col-lg-7 col-md-7 col-sm-8" name="apply">Apply now</button></a>
+		</div>
+	</div>
+<br>
+	<div class="row">
+		<div class="name_com">
+			<a href="#" title="Go to History back" onclick="goBack()"><< Back</a>
+		</div>
+		<script>
+		function goBack() {
+		  window.history.back();
+		}
+		</script>
+	</div>
+</div>
+{% endblock %}
